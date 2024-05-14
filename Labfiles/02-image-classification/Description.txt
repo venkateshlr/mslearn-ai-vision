@@ -1,0 +1,73 @@
+https://portal.vision.cognitive.azure.com/ --> Train the model for image analysis
+
+
+Skip to main content
+go deploy
+AI-102 | Module 2
+
+AI-102 | Module 2
+Home
+Lab Guide
+Microsoft Learn
+ Lab Guide
+Classify images with an Azure AI Vision custom model
+Azure AI Vision enables you to train custom models to classify and detect objects with labels you specify. In this lab, we'll build a custom image classification model to classify images of fruit.
+
+Create a custom model training project
+Next, you will create a new training project for custom image classification in Vision Studio.
+
+In the web browser, navigate to https://portal.vision.cognitive.azure.com/ and sign in with the Microsoft account where you created your Azure AI resource.
+
+Select the Customize models with images tile (can be found in the Image analysis tab if it isn't showing in your default view), and if prompted select the Azure AI resource you created.
+
+In your project, select Add new dataset on the top. Configure with the following settings:
+
+Dataset name: training_images
+
+Model type: Image classification
+
+Select Azure blob storage container: Select Select Container
+
+Subscription: Your Azure subscription
+Storage account: The storage account you created
+Blob container: fruit
+Select the box to "Allow Vision Studio to read and write to your blob storage"
+
+Select the training_images dataset.
+
+At this point in project creation, you would usually select Create Azure ML Data Labeling Project and label your images, which generates a COCO file. You are encouraged to try this if you have time, but for the purposes of this lab we've already labeled the images for you and supplied the resulting COCO file.
+
+Select Add COCO file
+
+In the dropdown, select Import COCO file from a Blob Container
+
+Since you have already connected your container named fruit, Vision Studio searches that for a COCO file. Select training_labels.json from the dropdown, and add the COCO file.
+
+Navigate to Custom models on the left, and select Train a new model. Use the following settings:
+
+Name of model: classifyfruit
+Model type: Image classification
+Choose training dataset: training_images
+Leave the rest as default, and select Train model
+Training can take some time - default budget is up to an hour, however for this small dataset it is usually much quicker than that. Select the Refresh button every couple minutes until the status of the job is Succeeded. Select the model.
+
+Here you can view the performance of the training job. Review the precision and accuracy of the trained model.
+
+Test your custom model
+Your model has been trained and is ready to test.
+
+On the top of the page for your custom model, select Try it out.
+
+Select the classifyfruit model from the dropdown specifying the model you want to use, and browse to the 02-image-classification\test-images folder.
+
+Select each image and view the results. Select the JSON tab in the results box to examine the full JSON response.
+
+Clean up resources
+If you're not using the Azure resources created in this lab for other training modules, you can delete them to avoid incurring further charges.
+
+Open the Azure portal at https://portal.azure.com, and in the top search bar, search for the resources you created in this lab.
+
+On the resource page, select Delete and follow the instructions to delete the resource. Alternatively, you can delete the entire resource group to clean up all resources at the same time.
+
+ 00:50:590 hours and 50 minutes remaining on your lab session
+Keyboard released from VM
